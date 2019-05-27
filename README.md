@@ -1,1 +1,1 @@
-"# mui-theme-switcher" 
+# mui-theme-switcher 
