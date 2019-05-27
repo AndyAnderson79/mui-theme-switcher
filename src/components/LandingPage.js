@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   AppBar, 
-  FormControlLabel,
-  FormGroup,
   Menu,
   MenuItem,
   IconButton,
@@ -16,7 +14,6 @@ import {
  import MenuIcon from '@material-ui/icons/Menu';
  import { connect } from 'react-redux';
  import { updateTheme } from './../actions/themeActions';
- import * as Themes from './../themes';
 
 const styles = (theme) => ({
   root: {
