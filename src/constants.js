@@ -1,1 +1,3 @@
-export const UPDATE_THEME = "UPDATE_THEME";
+module.exports = {
+  UPDATE_THEME: "UPDATE_THEME",
+}
