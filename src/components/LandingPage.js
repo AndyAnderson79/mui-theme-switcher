@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import compose from 'just-compose';
 import {
   AppBar, 
   Menu,
@@ -38,6 +39,7 @@ class LandingPage extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     reduxTheme: PropTypes.object.isRequired,
+    updateTheme: PropTypes.func.isRequired,
   };
 
   state = {
@@ -70,7 +72,7 @@ class LandingPage extends React.Component {
               <MenuIcon color="secondary" />
             </IconButton>
             <Typography variant="h6" className={classes.title}>
-              Here's a title. Happy now?
+              Here&apos;s a title. Happy now?
             </Typography>
             <div>
               <IconButton
@@ -121,7 +123,7 @@ const mapDispatchToProps = (dispatch) => ({
   updateTheme: (theme) => dispatch(updateTheme(theme)),
 });
 
-LandingPage = withStyles(styles)(LandingPage);
-LandingPage = connect(mapStateToProps, mapDispatchToProps)(LandingPage);
-
-export default LandingPage
+export default compose(
+  withStyles(styles),
+  connect(mapStateToProps, mapDispatchToProps),
+)(LandingPage)

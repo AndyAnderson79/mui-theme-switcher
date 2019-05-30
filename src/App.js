@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import compose from 'just-compose';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import { CssBaseline } from '@material-ui/core';
 import { connect } from 'react-redux';
@@ -29,6 +30,6 @@ const mapStateToProps = (state) => ({
   reduxTheme: state.theme,
 });
 
-App = connect(mapStateToProps, null)(App);
-
-export default App
+export default compose(
+  connect(mapStateToProps, null),
+)(App)

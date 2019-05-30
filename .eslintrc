@@ -1,0 +1,35 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": [
+      "eslint:recommended", 
+      "plugin:react/recommended",
+      "plugin:react-redux/recommended"
+  ],
+  "parser": "babel-eslint",
+  "parserOptions": {
+      "ecmaFeatures": {
+          "jsx": true,
+          "modules": true,
+          "experimentalObjectRestSpread": true
+      },
+      "ecmaVersion": 2018,
+      "sourceType": "module"
+  },
+  "plugins": [
+      "react",
+      "react-redux"
+  ],
+  "rules": {
+    "react-redux/mapDispatchToProps-prefer-shorthand": 0
+  },
+  "settings": {
+    "react": {
+        "pragma": "React",
+        "version": "detect"
+    } 
+  } 
+}
