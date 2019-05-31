@@ -9,7 +9,7 @@ import App from './App';
 
 const middlewares = [thunk];
 
-if (process.env.NODE_ENV === `development`) {
+if (process.env.NODE_ENV === 'development') {
   middlewares.push(createLogger());
 }
 

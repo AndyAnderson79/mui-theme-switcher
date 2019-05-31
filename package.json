@@ -8,13 +8,12 @@
     "Redux"
   ],
   "repository": "github:andyanderson79/mui-theme-switcher",
-  "main": "./src/index.js",
+  "main": "src/index.js",
   "scripts": {
     "build": "npm run clean && webpack --mode production",
     "clean": "rm -rf build && mkdir build",
     "dev": "webpack-dev-server --mode development",
-    "dev-hot": "webpack-dev-server --mode development --hot",
-    "test": ""
+    "dev-hot": "webpack-dev-server --mode development --hot"
   },
   "author": "Andy Anderson <andy@andyscript.com>",
   "license": "ISC",
@@ -42,6 +41,7 @@
     "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.6",
+    "brotli-webpack-plugin": "^1.1.0",
     "copy-webpack-plugin": "^5.0.3",
     "css-loader": "^2.1.1",
     "eslint": "^5.16.0",

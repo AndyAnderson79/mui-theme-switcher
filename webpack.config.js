@@ -1,20 +1,16 @@
 const path = require('path');
+const BrotliPlugin = require('brotli-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
-module.exports = {
-  devServer: {
-    compress: true,
-    historyApiFallback: true,
-    host: process.env.NODE_DEV_HOST,
-    open: true,
-    port: process.env.NODE_DEV_PORT,
-  },
+require('dotenv-defaults').config({
+  path: __dirname + '/.env',
+  encoding: 'utf8',
+  defaults: __dirname + '/.env.defaults',
+});
+
+const config = {
   entry: './src/index.js',
-  output: {
-    path: path.resolve(__dirname, 'build'),
-    filename: 'bundle.js',
-  },
   module: {
     rules: [
       {
@@ -25,13 +21,18 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ['babel-loader', 'eslint-loader']
+        use: ['babel-loader', 'eslint-loader'],
       },
       {
         test: /\.html$/,
+        exclude: /template\.html$/,
         use: {
           loader: 'html-loader',
-          options: { minimize: true },
+          options: { 
+            minimize: true,
+            removeComments: false,
+            collapseWhitespace: true,
+          },
         }
       },
       {
@@ -62,17 +63,68 @@ module.exports = {
       },
       {
         test: /\.geojson$/,
-        loader: 'json-loader'
+        loader: 'json-loader',
       },
     ]
   },
   plugins: [
     new Dotenv({
-      defaults: true,
+      defaults: __dirname + '/.env.defaults',
+      path: __dirname + '/.env',
     }),
     new HtmlWebPackPlugin({
       template: './src/template.html',
-      filename: './index.html',
+      title: process.env.APP_TITLE,
+      filename: 'index.html'
     }),
-  ]
+  ],
+};
+
+module.exports = (env, argv={ mode: 'development'}) => {
+  switch (argv.mode) {
+    default:
+    case 'development': {
+      return {
+        ...config,
+        devServer: {
+          compress: true,
+          historyApiFallback: true,
+          host: process.env.DEV_HOST,
+          open: true,
+          port: process.env.DEV_PORT,
+        },
+        devtool: 'eval-source-map',
+      }
+    }
+
+    case 'production': {
+      return {
+        ...config,
+        output: {
+          path: path.resolve(__dirname, 'build'),
+          filename: '[name].bundle.js',
+        },
+        optimization: {
+          splitChunks: {
+            cacheGroups: {
+              commons: {
+                test: /[\\/]node_modules[\\/]/,
+                name: 'vendors',
+                chunks: 'all',
+              },
+            },
+          },
+        },
+        plugins: [
+          ...config.plugins,
+          new BrotliPlugin({
+            asset: '[path].br[query]',
+            test: /\.(js|css|html|svg)$/,
+            threshold: 10240,
+            minRatio: 0.8,
+          }),
+        ],
+      }
+    }
+  }
 }
