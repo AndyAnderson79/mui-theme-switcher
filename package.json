@@ -20,8 +20,8 @@
   "license": "ISC",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.0.0",
-    "@material-ui/icons": "^4.0.0",
+    "@material-ui/core": "^4.0.1",
+    "@material-ui/icons": "^4.0.1",
     "classnames": "^2.2.6",
     "dotenv-defaults": "^1.0.2",
     "dotenv-webpack": "^1.7.0",
