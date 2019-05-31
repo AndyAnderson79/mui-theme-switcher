@@ -4,8 +4,10 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   devServer: {
+    compress: true,
     historyApiFallback: true,
     host: process.env.NODE_DEV_HOST,
+    open: true,
     port: process.env.NODE_DEV_PORT,
   },
   entry: './src/index.js',
@@ -65,7 +67,9 @@ module.exports = {
     ]
   },
   plugins: [
-    new Dotenv(),
+    new Dotenv({
+      defaults: true,
+    }),
     new HtmlWebPackPlugin({
       template: './src/template.html',
       filename: './index.html',

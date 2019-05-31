@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import compose from 'just-compose';
+import { compose } from 'redux';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import { CssBaseline } from '@material-ui/core';
 import { connect } from 'react-redux';

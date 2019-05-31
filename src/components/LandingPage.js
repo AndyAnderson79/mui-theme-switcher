@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import compose from 'just-compose';
+import { compose } from 'redux';
 import {
   AppBar, 
   Menu,
@@ -124,6 +124,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default compose(
-  withStyles(styles),
   connect(mapStateToProps, mapDispatchToProps),
+  withStyles(styles),
 )(LandingPage)

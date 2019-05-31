@@ -24,6 +24,7 @@
       "react-redux"
   ],
   "rules": {
+    "no-console": "off",
     "react-redux/mapDispatchToProps-prefer-shorthand": 0
   },
   "settings": {
