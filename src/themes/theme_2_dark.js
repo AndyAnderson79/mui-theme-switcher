@@ -5,7 +5,7 @@ export default {
         main: "#b2dfdb",
       },
       secondary: {
-        main: "#616161",
+        main: "#d81b60",
       },
     },
   }
