@@ -17,8 +17,10 @@ class App extends React.Component {
   render() {
     const { reduxTheme } = this.props;
 
+    const currentTheme = `Theme_${reduxTheme.current}_${reduxTheme.type}`;
+
     return (
-      <MuiThemeProvider theme={createMuiTheme(Themes[reduxTheme.current])}>
+      <MuiThemeProvider theme={createMuiTheme(Themes[currentTheme])}>
         <CssBaseline />
         <LandingPage />
       </MuiThemeProvider>

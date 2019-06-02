@@ -1,3 +1,4 @@
 module.exports = {
   UPDATE_THEME: "UPDATE_THEME",
+  UPDATE_THEME_TYPE: "UPDATE_THEME_TYPE",
 }

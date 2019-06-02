@@ -3,18 +3,26 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import {
   AppBar, 
+  Avatar,
   Menu,
   MenuItem,
   IconButton,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
   Switch,
   Toolbar ,
   Typography,
   withStyles,
  } from '@material-ui/core';
  import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+ import BeachAccessIcon from '@material-ui/icons/BeachAccess';
+ import ImageIcon from '@material-ui/icons/Image';
  import MenuIcon from '@material-ui/icons/Menu';
+ import WorkIcon from '@material-ui/icons/Work';
  import { connect } from 'react-redux';
- import { updateTheme } from './../actions/themeActions';
+ import { updateTheme, updateThemeType } from './../actions/themeActions';
 
 const styles = (theme) => ({
   root: {
@@ -33,6 +41,11 @@ const styles = (theme) => ({
   toggleLabel: {
     margin: theme.spacing(1),
   },
+  list: {
+    width: '100%',
+    maxWidth: 360,
+    backgroundColor: theme.palette.background.paper,
+  },
 })
 
 class LandingPage extends React.Component {
@@ -40,16 +53,23 @@ class LandingPage extends React.Component {
     classes: PropTypes.object.isRequired,
     reduxTheme: PropTypes.object.isRequired,
     updateTheme: PropTypes.func.isRequired,
+    updateThemeType: PropTypes.func.isRequired,
   };
 
   state = {
     anchorEl: null,
   }
 
-  handleChange = (e) => {
+  handleToggleChangeTheme = (e) => {
     const { updateTheme } = this.props;
     
-    updateTheme(e.target.checked ? "DarkTheme" : "LightTheme")
+    updateTheme(e.target.checked ? 2 : 1)
+  };
+
+  handleToggleChangeType = (e) => {
+    const { updateThemeType } = this.props;
+    
+    updateThemeType(e.target.checked ? "dark" : "light")
   };
 
   handleMenu = (e) => {
@@ -102,14 +122,49 @@ class LandingPage extends React.Component {
           </Toolbar>
         </AppBar>
         <div className={classes.toggle}>
-          <span className={classes.toggleLabel}>LightTheme</span>
+          <span className={classes.toggleLabel}>Theme 1</span>
           <Switch
-            checked={reduxTheme.current === "DarkTheme"} 
-            onChange={this.handleChange}
+            checked={reduxTheme.current === 2} 
+            onChange={this.handleToggleChangeTheme}
             color="secondary"
           />
-          <span className={classes.toggleLabel}>DarkTheme</span>
+          <span className={classes.toggleLabel}>Theme 2</span>
         </div>
+        <div className={classes.toggle}>
+          <span className={classes.toggleLabel}>Light mode</span>
+          <Switch
+            checked={reduxTheme.type === "dark"} 
+            onChange={this.handleToggleChangeType}
+            color="secondary"
+          />
+          <span className={classes.toggleLabel}>Dark mode</span>
+        </div>
+        <List className={classes.list}>
+          <ListItem>
+            <ListItemAvatar>
+              <Avatar>
+                <ImageIcon />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary="Photos" secondary="Jan 9, 2014" />
+          </ListItem>
+          <ListItem>
+            <ListItemAvatar>
+              <Avatar>
+                <WorkIcon />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary="Work" secondary="Jan 7, 2014" />
+          </ListItem>
+          <ListItem>
+            <ListItemAvatar>
+              <Avatar>
+                <BeachAccessIcon />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary="Vacation" secondary="July 20, 2014" />
+          </ListItem>
+        </List>
       </div>
     )
   }
@@ -121,6 +176,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   updateTheme: (theme) => dispatch(updateTheme(theme)),
+  updateThemeType: (type) => dispatch(updateThemeType(type)),
 });
 
 export default compose(

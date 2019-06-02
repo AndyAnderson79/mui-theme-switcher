@@ -2,6 +2,7 @@ import * as Constants from './../constants';
 
 const initialState = {
   current: process.env.DEFAULT_THEME,
+  type: process.env.DEFAULT_THEME_TYPE,
 };
 
 export default (state=initialState, action={}) => {
@@ -11,6 +12,13 @@ export default (state=initialState, action={}) => {
       return {
         ...state,
         current: action.payload.theme,
+      }
+    }
+
+    case Constants.UPDATE_THEME_TYPE: {
+      return {
+        ...state,
+        type: action.payload.type,
       }
     }
 
