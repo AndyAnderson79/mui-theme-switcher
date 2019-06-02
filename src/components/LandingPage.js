@@ -37,6 +37,7 @@ const styles = (theme) => ({
   toggle: {
     display: 'flex',
     alignItems: 'center',
+    margin: theme.spacing(1),
   },
   toggleLabel: {
     margin: theme.spacing(1),
@@ -45,6 +46,7 @@ const styles = (theme) => ({
     width: '100%',
     maxWidth: 360,
     backgroundColor: theme.palette.background.paper,
+    margin: theme.spacing(1),
   },
 })
 
@@ -92,7 +94,7 @@ class LandingPage extends React.Component {
               <MenuIcon color="secondary" />
             </IconButton>
             <Typography variant="h6" className={classes.title}>
-              Here&apos;s a title. Happy now?
+              Here&apos;s a title
             </Typography>
             <div>
               <IconButton
@@ -140,7 +142,7 @@ class LandingPage extends React.Component {
           <span className={classes.toggleLabel}>Dark mode</span>
         </div>
         <List className={classes.list}>
-          <ListItem>
+          <ListItem button>
             <ListItemAvatar>
               <Avatar>
                 <ImageIcon />
@@ -148,7 +150,7 @@ class LandingPage extends React.Component {
             </ListItemAvatar>
             <ListItemText primary="Photos" secondary="Jan 9, 2014" />
           </ListItem>
-          <ListItem>
+          <ListItem button>
             <ListItemAvatar>
               <Avatar>
                 <WorkIcon />
@@ -156,7 +158,7 @@ class LandingPage extends React.Component {
             </ListItemAvatar>
             <ListItemText primary="Work" secondary="Jan 7, 2014" />
           </ListItem>
-          <ListItem>
+          <ListItem button>
             <ListItemAvatar>
               <Avatar>
                 <BeachAccessIcon />
