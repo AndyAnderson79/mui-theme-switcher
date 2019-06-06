@@ -9,7 +9,7 @@ require('dotenv-defaults').config({
   defaults: __dirname + '/.env.defaults',
 });
 
-const config = {
+const commonConfig = {
   entry: './src/index.js',
   module: {
     rules: [
@@ -80,12 +80,12 @@ const config = {
   ],
 };
 
-module.exports = (env, argv={ mode: 'development'}) => {
+module.exports = (env, argv={ mode: 'development' }) => {
   switch (argv.mode) {
     default:
     case 'development': {
       return {
-        ...config,
+        ...commonConfig,
         devServer: {
           compress: true,
           historyApiFallback: true,
@@ -99,7 +99,7 @@ module.exports = (env, argv={ mode: 'development'}) => {
 
     case 'production': {
       return {
-        ...config,
+        ...commonConfig,
         output: {
           path: path.resolve(__dirname, 'build'),
           filename: '[name].bundle.js',
@@ -116,7 +116,7 @@ module.exports = (env, argv={ mode: 'development'}) => {
           },
         },
         plugins: [
-          ...config.plugins,
+          ...commonConfig.plugins,
           new BrotliPlugin({
             asset: '[path].br[query]',
             test: /\.(js|css|html|svg)$/,
