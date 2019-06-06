@@ -2,11 +2,11 @@
 This template project is designed to allow for the quick setup of a [React](https://reactjs.org/) with [Redux](https://redux.js.org/) ([React Redux](https://react-redux.js.org/)) project using the [Material UI](https://material-ui.com/) framework and [Webpack](https://webpack.js.org/) for bundling the code.
 
 ## Table of Contents:
-1. [Prerequisites](##prerequisites)
-2. [Setup](##setup)
-3. [Webpack Configuration](##webpack-configuration)
-4. [Unit Testing](##unit-testing)
-5. [Docker Deployment](##docker-deployment)
+1. [Prerequisites](#prerequisites)
+2. [Setup](#setup)
+3. [Webpack Configuration](#webpack-configuration)
+4. [Unit Testing](#unit-testing)
+5. [Docker Deployment](#docker-deployment)
 
 ## Prerequisites
 The following tools are required to set up or run this template:
@@ -25,7 +25,7 @@ yarn run setup
 ```
  This `setup` script installs all of the required node packages in the root *node_modules* directory then scans for any vulnerabilities within the package files and automatically installs any compatible updates to vulnerable dependencies that were found. 
  
- A blank *.env* file is also created in the root directory (more on environment variables [here](###configuration-using-environment-variables)).
+ A blank *.env* file is also created in the root directory (more on environment variables [here](#configuration-using-environment-variables)).
 
 ## Webpack Configuration
 Configuration for the Webpack bundling is all found within *webpack.config.js* in the root directory. 
