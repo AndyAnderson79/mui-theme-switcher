@@ -1,1 +1,1 @@
-# mui-theme-switcher 
+# template-frontend-react-redux-mui

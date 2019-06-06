@@ -1,13 +1,13 @@
 {
-  "name": "mui-theme-switcher",
+  "name": "template-frontend-react-redux-mui",
   "version": "1.0.0",
-  "description": "A quick and dirty experiment with switching Material UI themes on-the-fly.",
+  "description": "A template for quickly setting up a react/redux/Material UI frontend",
   "keywords": [
     "Material UI",
     "React",
     "Redux"
   ],
-  "repository": "github:andyanderson79/mui-theme-switcher",
+  "repository": "github:FutureCitiesCatapult/template-frontend-react-redux-mui",
   "main": "src/index.js",
   "scripts": {
     "build": "npm run clean && webpack --mode production",
