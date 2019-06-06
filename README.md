@@ -50,7 +50,7 @@ yarn run dev
 // or
 yarn run dev-hot
 ```
-Both the `dev` and `dev-hot` scripts use [webpack-dev-server](https://webpack.js.org/configuration/dev-server/) to ...
+Both the `dev` and `dev-hot` scripts use [webpack-dev-server](https://webpack.js.org/configuration/dev-server/) ...
 
 ### Production Build
 A `production` build can be run by the following command:
@@ -61,13 +61,13 @@ npm run build
 // with yarn
 yarn run build
 ```
-
+...
 
 
 
 
 ### Configuration using Environment Variables
-The *webpack.config.js* uses the [dotenv-webpack](https://www.npmjs.com/package/dotenv-webpack) plugin alongside [dotenv-defaults](https://www.npmjs.com/package/dotenv-defaults) to expose any environment variables set in the *.env* or *.evn.defaults* file in the root directory. These variables are available within the webpack configuration itself and also anywhere within the application in the format `process.env.[VARIABLE]`.
+The *webpack.config.js* uses the [dotenv-webpack](https://www.npmjs.com/package/dotenv-webpack) plugin alongside [dotenv-defaults](https://www.npmjs.com/package/dotenv-defaults) to expose any environment variables set in the *.env* or *.env.defaults* file in the root directory. These variables are available within the webpack configuration itself and also anywhere within the application in the format `process.env.[VARIABLE]`.
 
 The root *.env.defaults* file contains non-sensitive variables, such as `APP_TITLE`, and should be considered safe to commit to any version control system.
 
