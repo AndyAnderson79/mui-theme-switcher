@@ -13,7 +13,8 @@
     "build": "npm run clean && webpack --mode production",
     "clean": "rm -rf build && mkdir build",
     "dev": "webpack-dev-server --mode development",
-    "dev-hot": "webpack-dev-server --mode development --hot"
+    "dev-hot": "webpack-dev-server --mode development --hot",
+    "setup": "touch .env && npm install && npm audit fix"
   },
   "author": "Andy Anderson <andy@andyscript.com>",
   "license": "ISC",
