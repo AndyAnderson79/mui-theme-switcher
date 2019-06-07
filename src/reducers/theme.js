@@ -1,8 +1,8 @@
 import * as Constants from './../constants';
 
 const initialState = {
-  current: process.env.DEFAULT_THEME,
-  type: process.env.DEFAULT_THEME_TYPE,
+  current: process.env.APP_DEFAULT_THEME,
+  type: process.env.APP_DEFAULT_THEME_TYPE,
 };
 
 export default (state=initialState, action={}) => {

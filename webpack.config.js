@@ -75,10 +75,18 @@ const commonConfig = {
     new HtmlWebPackPlugin({
       template: './src/template.html',
       title: process.env.APP_TITLE,
-      filename: 'index.html'
+      filename: 'index.html',
     }),
   ],
 };
+
+if (process.env.BABEL_USE_MATERIAL_UI_ES_MODULES) {
+  commonConfig.resolve = {
+    alias: {
+      '@material-ui/core': '@material-ui/core/es',
+    },
+  }
+}
 
 module.exports = (env, argv={ mode: 'development' }) => {
   switch (argv.mode) {
@@ -102,7 +110,7 @@ module.exports = (env, argv={ mode: 'development' }) => {
         ...commonConfig,
         output: {
           path: path.resolve(__dirname, 'build'),
-          filename: '[name].bundle.js',
+          filename: '[name].[contenthash].bundle.js',
         },
         optimization: {
           splitChunks: {

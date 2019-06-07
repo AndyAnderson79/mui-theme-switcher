@@ -14,8 +14,8 @@ import {
   Switch,
   Toolbar ,
   Typography,
-  withStyles,
  } from '@material-ui/core';
+ import { withStyles } from '@material-ui/core/styles';
  import AccountCircleIcon from '@material-ui/icons/AccountCircle';
  import BeachAccessIcon from '@material-ui/icons/BeachAccess';
  import ImageIcon from '@material-ui/icons/Image';
