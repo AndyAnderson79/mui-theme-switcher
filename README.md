@@ -2,11 +2,17 @@
 This template project is designed to allow for the quick setup of a [React](https://reactjs.org/) with [Redux](https://redux.js.org/) ([React Redux](https://react-redux.js.org/)) project using the [Material UI](https://material-ui.com/) framework and [Webpack](https://webpack.js.org/) for bundling the code.
 
 ## Table of Contents:
-1. [Prerequisites](#prerequisites)
-2. [Setup](#setup)
-3. [Webpack Configuration](#webpack-configuration)
-4. [Unit Testing](#unit-testing)
-5. [Docker Deployment](#docker-deployment)
+- [template-frontend-react-redux-mui](#template-frontend-react-redux-mui)
+  - [Table of Contents:](#table-of-contents)
+  - [Prerequisites](#prerequisites)
+  - [Setup](#setup)
+  - [Babel & Webpack Configuration](#babel--webpack-configuration)
+    - [Development and Production Build Modes](#development-and-production-build-modes)
+    - [Development Builds](#development-builds)
+    - [Production Build](#production-build)
+    - [Configuration using Environment Variables](#configuration-using-environment-variables)
+  - [Unit Testing](#unit-testing)
+  - [Docker Deployment](#docker-deployment)
 
 ## Prerequisites
 The following tools are required to set up or run this template:
@@ -27,7 +33,7 @@ yarn run setup
  
  A blank *.env* file is also created in the root directory (more on environment variables [here](#configuration-using-environment-variables)).
 
-## Webpack Configuration
+## Babel & Webpack Configuration
 Configuration for the Webpack bundling is all found within *webpack.config.js* in the root directory. 
 
 ### Development and Production Build Modes
