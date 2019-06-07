@@ -8,8 +8,8 @@ This template project is designed to allow for the quick setup of a [React](http
   - [Setup](#setup)
   - [Babel & Webpack Configuration](#babel--webpack-configuration)
     - [Development and Production Build Modes](#development-and-production-build-modes)
-    - [Development Builds](#development-builds)
-    - [Production Build](#production-build)
+      - [Development Builds](#development-builds)
+      - [Production Build](#production-build)
     - [Configuration using Environment Variables](#configuration-using-environment-variables)
   - [Unit Testing](#unit-testing)
   - [Docker Deployment](#docker-deployment)
@@ -43,7 +43,7 @@ Within a switch statement after the `commonConfig` object individual properties 
 
 Webpack will use the `--mode` flag it recieves when run to determine which build to bundle. This flag defaults to `development`.  
 
-### Development Builds
+#### Development Builds
 A `development` build can be run in the following ways:
 ```
 // with npm
@@ -58,7 +58,7 @@ yarn run dev-hot
 ```
 Both the `dev` and `dev-hot` scripts use [webpack-dev-server](https://webpack.js.org/configuration/dev-server/) ...
 
-### Production Build
+#### Production Build
 A `production` build can be run by the following command:
 ```
 // with npm
