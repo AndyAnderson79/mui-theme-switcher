@@ -95,10 +95,10 @@ module.exports = (env, argv={ mode: 'development' }) => {
       return {
         ...commonConfig,
         devServer: {
-          compress: WEBPACK_DEV_SERVER_COMPRESS,
+          compress: process.env.WEBPACK_DEV_SERVER_COMPRESS === 'true',
           historyApiFallback: true,
           host: process.env.WEBPACK_DEV_SERVER_HOST,
-          open: process.env.WEBPACK_DEV_SERVER_OPEN,
+          open: process.env.WEBPACK_DEV_SERVER_OPEN === 'true',
           port: process.env.WEBPACK_DEV_SERVER_PORT,
         },
         devtool: 'eval-source-map',

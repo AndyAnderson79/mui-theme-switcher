@@ -61,14 +61,14 @@ A `development` build can be run in the following ways:
 // with npm
 npm run dev
 // or
-npm run dev-hot
+npm run dev:hot
 
 // with yarn
 yarn run dev
 // or
-yarn run dev-hot
+yarn run dev:hot
 ```
-Both the `dev` and `dev-hot` scripts use [webpack-dev-server](https://webpack.js.org/configuration/dev-server/) to serve a `development` build locally. Some options are configured already in the root *.env.defaults* and can be overriden in the root *.env* file or within the root *webpack.config.js* itself as required.
+Both the `dev` and `dev:hot` scripts use [webpack-dev-server](https://webpack.js.org/configuration/dev-server/) to serve a `development` build locally. Some options are configured already in the root *.env.defaults* and can be overriden in the root *.env* file or within the root *webpack.config.js* itself as required.
 
 #### Production Build
 A `production` build can be run by the following command:

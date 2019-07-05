@@ -20,7 +20,7 @@ module.exports = (api) => {
     ...conditionalPresets,
   ];
 
-  const conditionalPlugins = (process.env.BABEL_USE_MATERIAL_UI_ES_MODULES)
+  const conditionalPlugins = (process.env.BABEL_USE_MATERIAL_UI_ES_MODULES === 'true')
     ? [
         [
           "import", {
