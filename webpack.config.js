@@ -1,13 +1,13 @@
-const path = require('path');
-const BrotliPlugin = require('brotli-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
-const HtmlWebPackPlugin = require('html-webpack-plugin');
+const path = require('path')
+const BrotliPlugin = require('brotli-webpack-plugin')
+const Dotenv = require('dotenv-webpack')
+const HtmlWebPackPlugin = require('html-webpack-plugin')
 
 require('dotenv-defaults').config({
   path: __dirname + '/.env',
   encoding: 'utf8',
   defaults: __dirname + '/.env.defaults',
-});
+})
 
 const commonConfig = {
   entry: './src/index.js',

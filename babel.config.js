@@ -1,7 +1,7 @@
 module.exports = (api) => {
-  api.cache(false);
+  api.cache(false)
 
-  const conditionalPresets = [];
+  const conditionalPresets = []
   
   const presets = [
     [
@@ -18,7 +18,7 @@ module.exports = (api) => {
     ],
     "@babel/react",
     ...conditionalPresets,
-  ];
+  ]
 
   const conditionalPlugins = (process.env.BABEL_USE_MATERIAL_UI_ES_MODULES === 'true')
     ? [
@@ -64,14 +64,13 @@ module.exports = (api) => {
           "@material-ui/icons"
         ],
       ]
-  ;
 
   const plugins = [
     "@babel/proposal-class-properties",
     "@babel/syntax-dynamic-import",
     "@babel/transform-runtime",
     ...conditionalPlugins,
-  ];
+  ]
 
   return {
     presets,

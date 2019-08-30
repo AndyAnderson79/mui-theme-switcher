@@ -1,31 +1,30 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { compose } from 'redux';
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import { CssBaseline } from '@material-ui/core';
-import { connect } from 'react-redux';
-import * as Themes from './themes';
-import LandingPage from './components/LandingPage';
+import React from 'react'
+import PropTypes from 'prop-types'
+import compose from 'recompose/compose'
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
+import { CssBaseline } from '@material-ui/core'
+import { connect } from 'react-redux'
 
-require('typeface-roboto');
+import * as themes from './themes'
+import LandingPage from './components/LandingPage'
 
-class App extends React.Component {
-  static propTypes = {
-    reduxTheme: PropTypes.object.isRequired,
-  };
+require('typeface-roboto')
 
-  render() {
-    const { reduxTheme } = this.props;
+function App(props) {
+  const { reduxTheme } = props
 
-    const currentTheme = `Theme_${reduxTheme.current}_${reduxTheme.type}`;
+  const currentTheme = `Theme_${reduxTheme.current}_${reduxTheme.type}`
 
-    return (
-      <MuiThemeProvider theme={createMuiTheme(Themes[currentTheme])}>
-        <CssBaseline />
-        <LandingPage />
-      </MuiThemeProvider>
-    )
-  }
+  return (
+    <MuiThemeProvider theme={createMuiTheme(themes[currentTheme])}>
+      <CssBaseline />
+      <LandingPage />
+    </MuiThemeProvider>
+  )
+}
+
+App.propTypes = {
+  reduxTheme: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = (state) => ({
