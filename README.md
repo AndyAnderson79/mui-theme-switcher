@@ -1,8 +1,8 @@
-# template-frontend-react-redux-mui
+# mui-theme-switcher
 This template project is designed to allow for the quick setup of a [React](https://reactjs.org/) with [Redux](https://redux.js.org/) ([React Redux](https://react-redux.js.org/)) project using the [Material UI](https://material-ui.com/) framework and [Webpack](https://webpack.js.org/) for bundling the code.
 
 ## Table of Contents:
-- [template-frontend-react-redux-mui](#template-frontend-react-redux-mui)
+- [mui-theme-switcher](#mui-theme-switcher)
   - [Table of Contents:](#table-of-contents)
   - [Prerequisites](#prerequisites)
   - [Setup](#setup)
@@ -21,7 +21,7 @@ The following tools are required to set up or run this template:
 - [npm](https://www.npmjs.com/) v6.4.1 **or** [Yarn](https://yarnpkg.com/) v1.16.0 
 
 ## Setup
-1. Clone the repo from https://github.com/FutureCitiesCatapult/template-frontend-react-redux-mui.git.
+1. Clone the repo from https://github.com/AndyAnderson79/mui-theme-switcher.git.
 2. Navigate to the root directory of this new repo and run either of the commands below:
 ```shell
 // with npm
