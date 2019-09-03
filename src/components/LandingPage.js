@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import clsx from 'clsx'
 import {
   AppBar, 
@@ -27,7 +28,6 @@ import InboxIcon from '@material-ui/icons/Inbox'
 import MailIcon from '@material-ui/icons/Mail'
 import MenuIcon from '@material-ui/icons/Menu'
 import WorkIcon from '@material-ui/icons/Work'
-import { useDispatch, useSelector } from 'react-redux'
 
 import { updateTheme, updateThemeType } from './../actions/themeActions'
 
@@ -110,19 +110,20 @@ export default function LandingPage() {
   const classes = useStyles()
   const theme = useTheme()
   const dispatch = useDispatch()
+  const reduxTheme = useSelector((state) => state.theme)
 
   const [drawerOpen, setDrawerOpen] = useState(false)
   const [menuAnchorEl, setMenuAnchorEl] = useState(null)
 
-  const reduxTheme = useSelector((state) => state.theme)
+  const toggleChangeTheme = useCallback(
+    (event) => dispatch(updateTheme((event.target.checked) ? 2 : 1)),
+    [dispatch]
+  )
 
-  const toggleChangeTheme = (event) => {
-    dispatch(updateTheme(event.target.checked ? 2 : 1))   
-  }
-
-  const toggleChangeThemeType = (event) => {
-    dispatch(updateThemeType(event.target.checked ? "dark": "light"))
-  }
+  const toggleChangeThemeType = useCallback(
+    (event) => dispatch(updateThemeType((event.target.checked) ? "dark" : "light")),
+    [dispatch]
+  )
 
   const toggleDrawerOpen = () => {
     setDrawerOpen((prevDrawerOpen) => !prevDrawerOpen)
