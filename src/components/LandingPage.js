@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
-import PropTypes from 'prop-types'
 import clsx from 'clsx'
-import compose from 'recompose/compose'
 import {
   AppBar, 
   Avatar,
@@ -29,7 +27,7 @@ import InboxIcon from '@material-ui/icons/Inbox'
 import MailIcon from '@material-ui/icons/Mail'
 import MenuIcon from '@material-ui/icons/Menu'
 import WorkIcon from '@material-ui/icons/Work'
-import { connect } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { updateTheme, updateThemeType } from './../actions/themeActions'
 
@@ -108,21 +106,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-function LandingPage(props) {
+export default function LandingPage() {
   const classes = useStyles()
   const theme = useTheme()
+  const dispatch = useDispatch()
 
   const [drawerOpen, setDrawerOpen] = useState(false)
   const [menuAnchorEl, setMenuAnchorEl] = useState(null)
 
-  const { reduxTheme, updateTheme, updateThemeType } = props
+  const reduxTheme = useSelector((state) => state.theme)
 
-  const toggleChangeTheme = (event) => {    
-    updateTheme(event.target.checked ? 2 : 1)
+  const toggleChangeTheme = (event) => {
+    dispatch(updateTheme(event.target.checked ? 2 : 1))   
   }
 
-  const toggleChangeThemeType = (event) => {    
-    updateThemeType(event.target.checked ? "dark" : "light")
+  const toggleChangeThemeType = (event) => {
+    dispatch(updateThemeType(event.target.checked ? "dark": "light"))
   }
 
   const toggleDrawerOpen = () => {
@@ -268,22 +267,3 @@ function LandingPage(props) {
     </div>
   )
 }
-
-LandingPage.propTypes = {
-  reduxTheme: PropTypes.object.isRequired,
-  updateTheme: PropTypes.func.isRequired,
-  updateThemeType: PropTypes.func.isRequired,
-}
-
-const mapStateToProps = (state) => ({
-  reduxTheme: state.theme,
-})
-
-const mapDispatchToProps = (dispatch) => ({
-  updateTheme: (theme) => dispatch(updateTheme(theme)),
-  updateThemeType: (type) => dispatch(updateThemeType(type)),
-})
-
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-)(LandingPage)

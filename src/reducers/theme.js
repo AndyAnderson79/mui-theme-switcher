@@ -3,7 +3,7 @@ import * as constants from './../constants'
 const initialState = {
   current: process.env.APP_THEME,
   type: process.env.APP_THEME_TYPE,
-};
+}
 
 export default (state=initialState, action={}) => {
   switch (action.type) {
