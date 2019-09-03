@@ -21,11 +21,15 @@
   },
   "plugins": [
       "react",
+      "react-hooks",
       "react-redux"
   ],
   "rules": {
     "no-console": "off",
-    "react-redux/mapDispatchToProps-prefer-shorthand": 0
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react-redux/mapDispatchToProps-prefer-shorthand": 0,
+    "react-redux/prefer-separate-component-file": 0
   },
   "settings": {
     "react": {

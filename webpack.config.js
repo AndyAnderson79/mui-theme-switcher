@@ -1,15 +1,15 @@
-const path = require('path');
-const BrotliPlugin = require('brotli-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
-const HtmlWebPackPlugin = require('html-webpack-plugin');
+const path = require('path')
+const BrotliPlugin = require('brotli-webpack-plugin')
+const Dotenv = require('dotenv-webpack')
+const HtmlWebPackPlugin = require('html-webpack-plugin')
 
 require('dotenv-defaults').config({
   path: __dirname + '/.env',
   encoding: 'utf8',
   defaults: __dirname + '/.env.defaults',
-});
+})
 
-const config = {
+const commonConfig = {
   entry: './src/index.js',
   module: {
     rules: [
@@ -75,23 +75,31 @@ const config = {
     new HtmlWebPackPlugin({
       template: './src/template.html',
       title: process.env.APP_TITLE,
-      filename: 'index.html'
+      filename: 'index.html',
     }),
   ],
 };
 
-module.exports = (env, argv={ mode: 'development'}) => {
+if (process.env.BABEL_USE_MATERIAL_UI_ES_MODULES) {
+  commonConfig.resolve = {
+    alias: {
+      '@material-ui/core': '@material-ui/core/es',
+    },
+  }
+}
+
+module.exports = (env, argv={ mode: 'development' }) => {
   switch (argv.mode) {
     default:
     case 'development': {
       return {
-        ...config,
+        ...commonConfig,
         devServer: {
-          compress: true,
+          compress: process.env.WEBPACK_DEV_SERVER_COMPRESS === 'true',
           historyApiFallback: true,
-          host: process.env.DEV_HOST,
-          open: true,
-          port: process.env.DEV_PORT,
+          host: process.env.WEBPACK_DEV_SERVER_HOST,
+          open: process.env.WEBPACK_DEV_SERVER_OPEN === 'true',
+          port: process.env.WEBPACK_DEV_SERVER_PORT,
         },
         devtool: 'eval-source-map',
       }
@@ -99,10 +107,10 @@ module.exports = (env, argv={ mode: 'development'}) => {
 
     case 'production': {
       return {
-        ...config,
+        ...commonConfig,
         output: {
           path: path.resolve(__dirname, 'build'),
-          filename: '[name].bundle.js',
+          filename: '[name].[contenthash].bundle.js',
         },
         optimization: {
           splitChunks: {
@@ -116,7 +124,7 @@ module.exports = (env, argv={ mode: 'development'}) => {
           },
         },
         plugins: [
-          ...config.plugins,
+          ...commonConfig.plugins,
           new BrotliPlugin({
             asset: '[path].br[query]',
             test: /\.(js|css|html|svg)$/,
