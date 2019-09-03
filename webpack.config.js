@@ -36,7 +36,7 @@ const commonConfig = {
         }
       },
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(png|jpg|gif|ico)$/,
         use: 'file-loader',
       },
       {
@@ -76,6 +76,7 @@ const commonConfig = {
       template: './src/template.html',
       title: process.env.APP_TITLE,
       filename: 'index.html',
+      favicon: './src/favicon.ico',
     }),
   ],
 };
@@ -96,10 +97,10 @@ module.exports = (env, argv={ mode: 'development' }) => {
         ...commonConfig,
         devServer: {
           compress: process.env.WEBPACK_DEV_SERVER_COMPRESS === 'true',
-          historyApiFallback: true,
           host: process.env.WEBPACK_DEV_SERVER_HOST,
           open: process.env.WEBPACK_DEV_SERVER_OPEN === 'true',
           port: process.env.WEBPACK_DEV_SERVER_PORT,
+          historyApiFallback: true,
         },
         devtool: 'eval-source-map',
       }

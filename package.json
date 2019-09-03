@@ -15,7 +15,7 @@
     "dev": "webpack-dev-server --mode development --progress",
     "dev:hot": "webpack-dev-server --mode development --progress --hot",
     "serve": "serve build",
-    "setup": "touch .env && npm install && npm audit fix"
+    "setup": "rm -rf node_modules && touch .env && npm install && npm audit fix"
   },
   "author": "Andy Anderson <andy@andyscript.com>",
   "license": "ISC",

@@ -1,7 +1,7 @@
 import React from 'react'
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
-import { CssBaseline } from '@material-ui/core'
 import { useSelector } from 'react-redux'
+import { CssBaseline } from '@material-ui/core'
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
 
 import * as themes from './themes'
 import LandingPage from './components/LandingPage'
